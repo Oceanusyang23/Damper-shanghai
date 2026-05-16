@@ -119,7 +119,7 @@ export default function App() {
       const nBVelOff = bVelOff + accOff * dt;
       const nBPosOff = bPosOff + nBVelOff * dt;
 
-      // 2. Calculate Active Control State (Coupled TMD)
+      // 2. Calculate Active Control State (Coupled Damper)
       const { bPos, bVel, dPos, dVel } = stateRef.current.on;
       
       const forceOnBuilding = totalForce - kB * bPos - dB * bVel + kD * (dPos - bPos) + dD * (dVel - bVel);
@@ -397,7 +397,7 @@ export default function App() {
                    >
                       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#22d3ee 1px, transparent 1px), linear-gradient(90deg, #22d3ee 1px, transparent 1px)', backgroundSize: '12px 24px' }} />
                       
-                      {/* TMD highlight zone at 125th floor */}
+                      {/* Damper highlight zone at 125th floor */}
                       <div className="absolute top-[8%] inset-x-0 h-16 bg-cyan-400/10 border-y border-cyan-400/20 backdrop-blur-sm shadow-[inset_0_0_20px_rgba(34,211,238,0.1)] flex items-center justify-center">
                          <div className="w-8 h-8 rounded-full bg-cyan-500 shadow-[0_0_20px_#22d3ee] animate-pulse flex items-center justify-center">
                             <Magnet className="text-white w-4 h-4" />
@@ -409,7 +409,7 @@ export default function App() {
                          <div className="w-12 h-[1px] bg-cyan-500/50" />
                          <div className="flex flex-col ml-2">
                             <span className="text-xs font-bold text-cyan-400">125-126层</span>
-                            <span className="text-[10px] text-slate-500 uppercase">阻尼器位置 / TMD</span>
+                            <span className="text-[10px] text-slate-500 uppercase">阻尼器位置</span>
                          </div>
                       </div>
                    </motion.div>
